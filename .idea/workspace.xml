@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e04c335-1d84-4090-bfc2-539a087716d1" name="Changes" comment="" />
+    <list default="true" id="9e04c335-1d84-4090-bfc2-539a087716d1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/auth.monolithic.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/monolithic/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/monolithic/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monolithic/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/monolithic/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monolithic/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/monolithic/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monolithic/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/monolithic/src/main/resources/application.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,30 +65,38 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "dart.analysis.tool.window.visible": "false",
     "jdk.selected.JAVA_MODULE": "19",
-    "last_opened_file_path": "/Users/jangseongho/Documents/developers/4seasons/auth",
+    "last_opened_file_path": "/Users/jangseongho/Documents/developers/4seasons/auth/monolithic",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
     "show.migrate.to.gradle.popup": "false",
+    "spring.configuration.checksum": "4d4b71764f6e8fd24b60c003eac7ef92",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/monolithic" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/chat" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.Application">
+  <component name="RunManager" selected="Spring Boot.Monolithic">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="auth" />
       <method v="2">
@@ -110,13 +131,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="auth.domain.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.instream.auth.domain.Application" />
+    <configuration name="Monolithic" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ALTERNATIVE_JRE_PATH" value="corretto-21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <envs>
+        <env name="MONOLITHIC_SERVER_PORT" value="8081" />
+        <env name="POSTGRES_DB" value="monolithic" />
+        <env name="POSTGRES_IP" value="127.0.0.1" />
+        <env name="POSTGRES_PASSWORD" value="1q2w3e4r!" />
+        <env name="POSTGRES_PORT" value="5433" />
+        <env name="POSTGRES_USER" value="user" />
+        <env name="REDIS_PORT" value="6380" />
+      </envs>
+      <module name="auth.monolithic.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.instream.auth.domain.monolithic.Application" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.Monolithic" />
+      <item itemvalue="Spring Boot.Application (1)" />
+      <item itemvalue="Spring Boot.Application (2)" />
+      <item itemvalue="Spring Boot.Application (3)" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -127,7 +165,8 @@
       <option name="presentableId" value="Default" />
       <updated>1703748358242</updated>
       <workItem from="1703748359288" duration="90000" />
-      <workItem from="1703751351485" duration="1155000" />
+      <workItem from="1703751351485" duration="1954000" />
+      <workItem from="1703753493488" duration="4288000" />
     </task>
     <servers />
   </component>

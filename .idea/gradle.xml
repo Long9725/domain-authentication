@@ -13,6 +13,7 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/chat" />
+        <option name="gradleJvm" value="corretto-21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/chat" />
@@ -21,6 +22,7 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/live" />
+        <option name="gradleJvm" value="corretto-21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/live" />
@@ -29,6 +31,7 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/monolithic" />
+        <option name="gradleJvm" value="corretto-21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/monolithic" />
@@ -37,6 +40,7 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/user" />
+        <option name="gradleJvm" value="corretto-21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/user" />

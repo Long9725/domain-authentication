@@ -18,7 +18,7 @@ API Request에서 다음 2가지를 가지고 권한을 인증합니다.
 
 ## 환경
 
-+ JDK 21
++ amazoncorretto JDK 21
 + Spring boot 3.2.1
 + Spring MVC & JPA
 + PostgreSQL
