@@ -3,6 +3,8 @@ Monolithic 환경에서 Spring Security 활용해서 도메인 & API Key 인증 
 
 ## 환경
 
+<img src="./statics/images/goal_architecture.png"  alt="goal_architecture"/>
+
 + amazoncorretto JDK 21
 + Spring boot 3.2.1
 + Spring MVC & JPA

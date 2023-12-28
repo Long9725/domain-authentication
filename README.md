@@ -11,6 +11,8 @@ API Request에서 다음 2가지를 가지고 권한을 인증합니다.
 
 ## 목표
 
+<img src="./statics/images/goal_architecture.png"  alt="goal_architecture"/>
+
 1. Monolithic 환경에서 Spring Security 활용해서 도메인 & API Key 인증 시스템 도입
 2. 유저 / 라이브 스트리밍 / 채팅 서비스를 분리
 3. React 같은 클라이언트 쪽에서 보상 트랜잭션 처리해보기
