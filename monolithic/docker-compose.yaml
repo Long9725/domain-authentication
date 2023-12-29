@@ -1,17 +1,17 @@
 version: "3.7"
 services:
-  monolithic-server:
-    image: monolithic-server:latest
-    container_name: monolithic-server
-    ports:
-      - "${MONOLITHIC_SERVER_PORT}:8080"
-    environment:
-      POSTGRES_IP: ${MONOLITHIC_SERVER_POSTGRES_IP}
-      POSTGRES_PORT: ${MONOLITHIC_SERVER_POSTGRES_PORT}
-      POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      REDIS_PORT: ${MONOLITHIC_SERVER_REDIS_PORT}
+#  monolithic-server:
+#    image: monolithic-server:latest
+#    container_name: monolithic-server
+#    ports:
+#      - "${MONOLITHIC_SERVER_PORT}:8080"
+#    environment:
+#      POSTGRES_IP: ${MONOLITHIC_SERVER_POSTGRES_IP}
+#      POSTGRES_PORT: ${MONOLITHIC_SERVER_POSTGRES_PORT}
+#      POSTGRES_DB: ${POSTGRES_DB}
+#      POSTGRES_USER: ${POSTGRES_USER}
+#      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+#      REDIS_PORT: ${MONOLITHIC_SERVER_REDIS_PORT}
 
   redis:
     image: redis:alpine
