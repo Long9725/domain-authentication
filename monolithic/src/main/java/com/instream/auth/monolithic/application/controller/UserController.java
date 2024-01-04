@@ -1,5 +1,6 @@
 package com.instream.auth.monolithic.application.controller;
 
+import com.instream.auth.monolithic.domain.user.dto.SignInUserCommand;
 import com.instream.auth.monolithic.domain.user.dto.SignUpUserCommand;
 import com.instream.auth.monolithic.domain.user.dto.UserDto;
 import com.instream.auth.monolithic.domain.user.service.UserReadService;
@@ -31,6 +32,12 @@ public class UserController {
     @PostMapping("/sign-up")
     public ResponseEntity<UserDto> signUp(@RequestBody @Valid SignUpUserCommand command) {
         UserDto userDto = userWriteService.create(command);
+        return ResponseEntity.status(HttpStatus.CREATED).body(userDto);
+    }
+
+    @PostMapping("/sign-in")
+    public ResponseEntity<UserDto> signIn(@RequestBody @Valid SignInUserCommand command) {
+        UserDto userDto = userReadService.signIn(command);
         return ResponseEntity.status(HttpStatus.CREATED).body(userDto);
     }
 }

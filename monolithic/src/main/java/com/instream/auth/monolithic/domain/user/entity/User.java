@@ -26,7 +26,7 @@ public class User {
     private UUID id;
 
     @NotBlank
-    @Size(min = 10, max = 20)
+    @Size(min = 8, max = 20)
     private String account;
 
     @NotBlank
