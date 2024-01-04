@@ -1,4 +1,4 @@
-package com.instream.auth.domain.monolithic;
+package com.instream.auth.monolithic;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
