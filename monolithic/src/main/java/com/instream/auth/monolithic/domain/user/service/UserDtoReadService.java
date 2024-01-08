@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
-public class UserReadService {
+public class UserDtoReadService {
     private final UserRepository userRepository;
 
     private final PasswordEncoder passwordEncoder;

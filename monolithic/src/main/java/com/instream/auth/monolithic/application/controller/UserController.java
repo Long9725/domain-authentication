@@ -3,13 +3,11 @@ package com.instream.auth.monolithic.application.controller;
 import com.instream.auth.monolithic.domain.user.dto.SignInUserCommand;
 import com.instream.auth.monolithic.domain.user.dto.SignUpUserCommand;
 import com.instream.auth.monolithic.domain.user.dto.UserDto;
-import com.instream.auth.monolithic.domain.user.service.UserReadService;
+import com.instream.auth.monolithic.domain.user.service.UserDtoReadService;
 import com.instream.auth.monolithic.domain.user.service.UserWriteService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,11 +19,11 @@ import java.util.UUID;
 public class UserController {
     private final UserWriteService userWriteService;
 
-    private final UserReadService userReadService;
+    private final UserDtoReadService userDtoReadService;
 
     @GetMapping("/{userId}")
     public ResponseEntity<UserDto> getUser(@PathVariable UUID userId) {
-        UserDto userDto = userReadService.getUser(userId);
+        UserDto userDto = userDtoReadService.getUser(userId);
         return ResponseEntity.ok(userDto);
     }
 
@@ -37,7 +35,7 @@ public class UserController {
 
     @PostMapping("/sign-in")
     public ResponseEntity<UserDto> signIn(@RequestBody @Valid SignInUserCommand command) {
-        UserDto userDto = userReadService.signIn(command);
+        UserDto userDto = userDtoReadService.signIn(command);
         return ResponseEntity.status(HttpStatus.CREATED).body(userDto);
     }
 
