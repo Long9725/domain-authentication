@@ -23,9 +23,9 @@ public class UserController {
 
     private final UserReadService userReadService;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<UserDto> getUser(@PathVariable UUID id) {
-        UserDto userDto = userReadService.getUser(id);
+    @GetMapping("/{userId}")
+    public ResponseEntity<UserDto> getUser(@PathVariable UUID userId) {
+        UserDto userDto = userReadService.getUser(userId);
         return ResponseEntity.ok(userDto);
     }
 
@@ -39,5 +39,11 @@ public class UserController {
     public ResponseEntity<UserDto> signIn(@RequestBody @Valid SignInUserCommand command) {
         UserDto userDto = userReadService.signIn(command);
         return ResponseEntity.status(HttpStatus.CREATED).body(userDto);
+    }
+
+    @PatchMapping("/{userId}/reset-api-key")
+    public ResponseEntity<UserDto> resetApiKey(@PathVariable UUID userId) {
+        UserDto userDto = userWriteService.resetApiKey(userId);
+        return ResponseEntity.status(HttpStatus.OK).body(userDto);
     }
 }

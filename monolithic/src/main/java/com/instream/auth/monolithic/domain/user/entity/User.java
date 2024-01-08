@@ -43,7 +43,7 @@ public class User {
 
     @NotBlank
     @Size(max = 60)
-    private String apiKey = String.format("ck_%s", UUID.randomUUID().toString().replace("-", ""));
+    private String apiKey = generateApiKey();
 
     @CreatedDate
     private LocalDateTime createdAt = LocalDateTime.now();
@@ -67,9 +67,17 @@ public class User {
         nickname = other;
     }
 
+    public void resetApiKey() {
+        apiKey = generateApiKey();
+    }
+
     private void validateNickname(String nickname) {
         Assert.isTrue(Objects.requireNonNull(nickname).length() >= NAME_MIN_LENGTH, "최소 길이보다 부족합니다.");
         Assert.isTrue(Objects.requireNonNull(nickname).length() <= NAME_MAX_LENGTH, "최대 길이를 초과했습니다.");
+    }
+
+    private  String generateApiKey() {
+        return String.format("ck_%s", UUID.randomUUID().toString().replace("-", ""));
     }
 
     @PrePersist

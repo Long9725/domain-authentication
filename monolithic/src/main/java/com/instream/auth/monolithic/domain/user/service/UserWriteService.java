@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @RequiredArgsConstructor
 @Service
 public class UserWriteService {
@@ -24,6 +26,15 @@ public class UserWriteService {
                 .dbStatus(DbStatus.USE)
                 .build();
         userRepository.save(user);
+        return new UserDto(user.getId(), user.getAccount(), user.getNickname(), user.getApiKey());
+    }
+
+    public UserDto resetApiKey(UUID userId) {
+        User user = userRepository.findById(userId).orElseThrow();
+
+        user.resetApiKey();;
+        userRepository.save(user);
+
         return new UserDto(user.getId(), user.getAccount(), user.getNickname(), user.getApiKey());
     }
 }
