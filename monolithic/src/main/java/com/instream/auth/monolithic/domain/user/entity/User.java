@@ -1,5 +1,6 @@
 package com.instream.auth.monolithic.domain.user.entity;
 
+import com.instream.auth.monolithic.domain.application.entity.Application;
 import com.instream.auth.monolithic.util.attributeConverter.DbStatusAttributeConverter;
 import com.instream.auth.monolithic.util.enums.DbStatus;
 import jakarta.persistence.*;
@@ -7,12 +8,14 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.BatchSize;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.util.Assert;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -47,6 +50,11 @@ public class User {
 
     @CreatedDate
     private LocalDateTime createdAt = LocalDateTime.now();
+
+    @BatchSize(size = 1000)
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "application")
+    private List<Application> applications = new ArrayList<>();
 
     private static final String PASSWORD_PATTERN = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,20}$";
 
