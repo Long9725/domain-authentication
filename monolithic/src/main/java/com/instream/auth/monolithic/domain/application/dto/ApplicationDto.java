@@ -11,6 +11,8 @@ public record ApplicationDto(
 
         ApplicationType type,
 
+        String apiKey,
+
         UserDtoWithoutApiKey creator
 ) {
 }
