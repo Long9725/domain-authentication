@@ -2,6 +2,7 @@ package com.instream.auth.monolithic.domain.application.entity;
 
 
 import com.instream.auth.monolithic.domain.user.dto.UserDto;
+import com.instream.auth.monolithic.domain.user.dto.UserJpaDto;
 import com.instream.auth.monolithic.domain.user.entity.User;
 import com.instream.auth.monolithic.util.attributeConverter.ApplicationTypeAttributeConverter;
 import com.instream.auth.monolithic.util.enums.ApplicationType;
@@ -40,10 +41,18 @@ public class Application {
     // 이 부분에서 Application과 User는 서로 domain이 다르다. 근데 usecase layer 같은 상황에서는 dto를 받을텐데...
     // UserDto를 받아서 User로 바꾸고, Applicaiton을 save 했을 때 User entity에는 영향이 안가나?
     @Builder
-    public Application(UUID id, ApplicationType type, User user) {
+    public Application(UUID id, ApplicationType type, UserJpaDto user) {
         this.id = id;
         this.type = type;
-        this.user = user;
+        this.user = new User(
+                user.id(),
+                user.account(),
+                user.password(),
+                user.nickname(),
+                user.dbStatus(),
+                user.apiKey(),
+                user.createdAt()
+        );
     }
 
     public void resetApiKey() {

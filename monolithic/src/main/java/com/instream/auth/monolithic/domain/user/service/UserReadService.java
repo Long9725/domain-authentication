@@ -2,6 +2,7 @@ package com.instream.auth.monolithic.domain.user.service;
 
 import com.instream.auth.monolithic.domain.user.dto.SignInUserCommand;
 import com.instream.auth.monolithic.domain.user.dto.UserDto;
+import com.instream.auth.monolithic.domain.user.dto.UserJpaDto;
 import com.instream.auth.monolithic.domain.user.entity.User;
 import com.instream.auth.monolithic.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +13,7 @@ import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
-public class UserDtoReadService {
+public class UserReadService {
     private final UserRepository userRepository;
 
     private final PasswordEncoder passwordEncoder;
@@ -32,4 +33,8 @@ public class UserDtoReadService {
         return new UserDto(user.getId(), user.getAccount(), user.getNickname(), user.getApiKey());
     }
 
+    public UserJpaDto getJpaUser(UUID uuid) {
+        User user = userRepository.findById(uuid).orElseThrow();
+        return new UserJpaDto(user.getId(), user.getAccount(), user.getPassword(), user.getNickname(), user.getDbStatus(), user.getApiKey(), user.getCreatedAt());
+    }
 }

@@ -7,6 +7,7 @@ import com.instream.auth.monolithic.domain.application.entity.Application;
 import com.instream.auth.monolithic.domain.application.repository.ApplicationRepository;
 import com.instream.auth.monolithic.domain.user.dto.UserDto;
 import com.instream.auth.monolithic.domain.user.dto.UserDtoWithoutApiKey;
+import com.instream.auth.monolithic.domain.user.dto.UserJpaDto;
 import com.instream.auth.monolithic.domain.user.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,14 +19,14 @@ import java.util.UUID;
 public class ApplicationWriteService {
     private final ApplicationRepository applicationRepository;
 
-    public ApplicationDto save(User user, CreateApplicationCommand command) {
+    public ApplicationDto save(UserJpaDto user, CreateApplicationCommand command) {
         Application application = Application.builder()
                 .type(command.applicationType())
                 .user(user)
                 .build();
 
         applicationRepository.save(application);
-        UserDtoWithoutApiKey userDto = new UserDtoWithoutApiKey(user.getId(), user.getAccount(), user.getNickname());
+        UserDtoWithoutApiKey userDto = new UserDtoWithoutApiKey(user.id(), user.account(), user.nickname());
         return new ApplicationDto(application.getId(), application.getType(), application.getApiKey(), userDto);
     }
 

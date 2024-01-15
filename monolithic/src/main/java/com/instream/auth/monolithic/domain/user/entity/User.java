@@ -70,6 +70,16 @@ public class User {
         this.dbStatus = dbStatus;
     }
 
+    public User(UUID id, String account, String password, String nickname, DbStatus dbStatus, String apiKey, LocalDateTime createdAt) {
+        this.id = Objects.requireNonNull(id);
+        this.account = Objects.requireNonNull(account);
+        this.password = Objects.requireNonNull(password);
+        this.nickname = Objects.requireNonNull(nickname);
+        this.dbStatus = Objects.requireNonNull(dbStatus);
+        this.apiKey = Objects.requireNonNull(apiKey);
+        this.createdAt = Objects.requireNonNull(createdAt);
+    }
+
     public void changeNickname(String other) {
         validateNickname(other);
         nickname = other;
