@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ main ]
 
+env:
+  MODULE_PATH: monolithic
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,18 +19,14 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 21
-      - name: Move to monolithic module
-        run: cd monolithic
-      - name: Check monolithic module
-        run: ls -al
       - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+        run: chmod +x ./${{ env.MODULE_PATH }}/gradlew
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./${{ env.MODULE_PATH }}/gradlew build
       - name: Run JaCoCo
-        run: ./gradlew test jacocoTestReport
+        run: ./${{ env.MODULE_PATH }}/gradlew test jacocoTestReport
       - name: Upload JaCoCo Report
         uses: actions/upload-artifact@v2
         with:
           name: jacoco-report
-          path: ${{ github.workspace }}/monolithic/build/jacoco/reports/html/
+          path: ${{ github.workspace }}/${{ env.MODULE_PATH }}/build/jacoco/reports/html/
