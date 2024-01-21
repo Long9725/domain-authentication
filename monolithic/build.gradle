@@ -1,3 +1,4 @@
+
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.2.1'
@@ -5,6 +6,7 @@ plugins {
 	id 'jacoco'
 }
 
+def customJacocoReportDir = 'jacoco/reports'
 group = 'com.instream'
 version = '0.0.1-SNAPSHOT'
 
@@ -14,6 +16,29 @@ java {
 
 jacoco {
 	toolVersion = '0.8.11'
+}
+
+jacocoTestReport {
+	reports {
+		html.required.set(true)
+		html.outputLocation.set(layout.buildDirectory.dir("$customJacocoReportDir/html"))
+
+		xml.required.set(true)
+		xml.outputLocation.set(layout.buildDirectory.file("$customJacocoReportDir/xml/jacoco.xml"))
+
+		csv.required.set(true)
+		csv.outputLocation.set(layout.buildDirectory.file("$customJacocoReportDir/csv/jacoco.csv"))
+	}
+}
+
+jacocoTestCoverageVerification {
+	violationRules {
+		rule {
+			limit {
+				minimum = 0.10 // 10% 커버리지
+			}
+		}
+	}
 }
 
 configurations {
@@ -46,10 +71,10 @@ dependencies {
 }
 
 test {
-	finalizedBy jacocoTestReport
+	finalizedBy jacocoTestReport, jacocoTestCoverageVerification
 	useJUnitPlatform()
 }
 
-tasks.named('test') {
-	useJUnitPlatform()
-}
+//tasks.named('test') {
+//	useJUnitPlatform()
+//}
