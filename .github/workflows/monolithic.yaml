@@ -12,6 +12,9 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./${{ env.MODULE_PATH }}
 
     steps:
       - uses: actions/checkout@v2
@@ -19,19 +22,14 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 21
-        working-directory: ${{ env.MODULE_PATH }}
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
-        working-directory: ${{ env.MODULE_PATH }}
       - name: Build with Gradle
         run: ./gradlew build
-        working-directory: ${{ env.MODULE_PATH }}
       - name: Run JaCoCo
         run: ./gradlew test jacocoTestReport
-        working-directory: ${{ env.MODULE_PATH }}
       - name: Upload JaCoCo Report
         uses: actions/upload-artifact@v2
         with:
           name: jacoco-report
           path: ${{ github.workspace }}/build/jacoco/reports/html/
-        working-directory: ${{ env.MODULE_PATH }}
